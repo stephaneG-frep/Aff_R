@@ -3,14 +3,34 @@
    require_once __DIR__. "/lib/pdo.php";
    require_once __DIR__. "/lib/user.php";
 
+   $errors = [];
+
+   // si verifier et bon 
    if (isset($_POST['loginUser'])) {
-      echo "formulaire envoyé";
+      $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+      
+      
+      if ($user) {
+      // si bon utilisateur alors on connecte => session
+      }else{
+      // sinon message d'erreur
+           $errors[] = "mot de passe ou email incorrect";
+      }
    }
+
  ?>
 
 <div class="container col-xxl-8 px-4 py-5">
    
    <h1>Connexion</h1>
+
+   <?php
+      foreach ($errors as $error) { ?>
+         <div class="alert alert-danger" role="alert">
+            <?=$error; ?>
+         </div> 
+      <?php }
+   ?>
 
    <form action="" method="post">
        <div class="mb-3">
