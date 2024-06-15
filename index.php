@@ -1,4 +1,5 @@
-<?php require_once __DIR__. "/templates/header.php";
+<?php
+ require_once __DIR__. "/templates/header.php";
 
 /*  A fire quand ta oublié le premier password hached dans ta BDD
 *   $hash = password_hash('admin', PASSWORD_DEFAULT);
