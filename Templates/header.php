@@ -20,7 +20,7 @@
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-           <img src="assets/images/logo-checkit.png" alt="logo du site" width="120">
+           <img src="assets/images/todo.jpg" alt="logo du site" width="50">
         </a>
       </div>
 
