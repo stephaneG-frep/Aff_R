@@ -9,7 +9,11 @@ if(isset($_SESSION['user'])) {
 ?>
 
    <div class="container">
-       <h1>Mes listes</h1>
+
+       <div class="d-flex align-item-center justify-content-between">
+           <h1>Mes listes</h1>
+           <a href="ajout-modification-liste.php" class="btn btn-primary">Ajouter une liste</a>
+       </div>
 
        <div class="row">
 

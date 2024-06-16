@@ -4,17 +4,12 @@ session_start([
     'cookie_lifetime' => 86400,
 ]);
 
+function isUserConnected():bool
+{
+    return isset($_SESSION['user']);
+}
+
 ?>
 
 
-/*
-session_set_cookie_params([
-    'lifetime' => 3600,
-    'path' => '/',
-    'domain' => '.Aff_R.local/',
-    'httponly' => true
-]);
-
-session_start();
-*/
 

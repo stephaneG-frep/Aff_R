@@ -1,6 +1,8 @@
 <?php require_once __DIR__. "/templates/header.php"; ?>
 
-<div class="px-4 pt-5 my-5 text-center border-bottom">
+
+<div class="container col-xxl-8 px-4 py-5 text-center">
+
 
      <div class="container px-5">
         <img src="assets/images/start-up1.jpg" class="img-fluid" alt="photo de nos bureaux" width="1000" height="400" loading="lazy">
