@@ -19,12 +19,29 @@ function getListsByUserId(PDO $pdo, int $userId):array
 
 }
 
-// fonction d'ajout et de modification en BDD 
+
+// fonction qui récupaire une liste par son id
+function getListById(PDO $pdo, int $id):array|bool
+{
+    $query = $pdo->prepare("SELECT * FROM list WHERE id = :id");
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+
+// fonction d'ajout et de modification de liste en BDD 
 
 function saveList(PDO $pdo, string $title, int $userId, int $categoryId, int $id=null):int|bool
 {
     if ($id) {
       // si il y a un id alors UPDATE
+      $query = $pdo->prepare("UPDATE list SET title = :title, category_id = :category_id,
+                              user_id = :user_id
+                              WHERE id = :id");
+      $query->bindValue(':id', $id, PDO::PARAM_INT);
     } else {
       // si il n'y a pas un id alors INSERT
       $query = $pdo->prepare("INSERT INTO list (title, category_id, user_id)
@@ -47,4 +64,29 @@ function saveList(PDO $pdo, string $title, int $userId, int $categoryId, int $id
       // si pas ok => false
            return false;
         }
+}
+
+
+// fonction d'ajout d'items en BDD 
+
+function saveListItem(PDO $pdo, string $name, int $listId, bool $status = false, int $id=null):int|bool
+{
+    if ($id) {
+      // si il y a alors UPDATE
+      $query = $pdo->prepare("UPDATE item SET name = :name, list_id = :list_id,
+                              status = :status
+                              WHERE id = :id");
+      $query->bindValue(':id', $id, PDO::PARAM_INT);
+    } else {
+      // si il n'y a pas alors INSERT
+      $query = $pdo->prepare("INSERT INTO item (name, list_id, status)
+                              VALUES (:name, :list_id, :status)");
+      
+    }
+      $query->bindValue(':name', $name, PDO::PARAM_STR);
+      $query->bindValue(':list_id', $listId, PDO::PARAM_INT);
+      $query->bindValue(':status', $status, PDO::PARAM_BOOL);
+
+      return $query->execute();
+      
 }
