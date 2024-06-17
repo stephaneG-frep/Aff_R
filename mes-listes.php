@@ -29,7 +29,7 @@ if(isset($_SESSION['user'])) {
                  <h5 class="card-title"><?=$list['title'] ?></h5>
             </div>
             <div class="card-body d-flex justify-content-between align-item-end">              
-                <a href="#" class="btn btn-primary">Voir la liste</a>
+                <a href="ajout-modification-liste.php?id=<?=$list['id'] ?>" class="btn btn-primary">Voir la liste</a>
                 <div >
                     <span class="badge rounded-pill text-bg-primary">
                         <i class="bi <?=$list['category_icon']?>"></i>

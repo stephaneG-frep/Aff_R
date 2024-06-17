@@ -45,13 +45,21 @@ if (isset($_POST['saveList'])) {
       $errorsList[] = "Le titre est obligatoire";
     }
 }
-if (isset($_POST['saveItem'])) {
+if (isset($_POST['saveListItem'])) {
     if (!empty($_POST['name'])) {
 // sauvegarger
-       $res = saveListItem($pdo, $_POST['name'], (int)$_GET['id'], false);
+       $item_id = (isset($_POST['item_id']) ? $_POST['item_id'] : null);
+       $res = saveListItem($pdo, $_POST['name'], (int)$_GET['id'], false, $item_id);
     } else {
 // erreur
        $errorsListItem[] = "Le nom de l'item est obligatoire.";
+    }
+}
+// si action delete demandée item(id)
+if (isset($_GET['action']) && isset($_GET['item_id'])) {
+    if ($_GET['action'] === 'deleteListItem') {
+        $res = deleteListItemById($pdo, $_GET['item_id']);
+        header("location: ajout-modification-liste.php?id=" . $_GET['id']);
     }
 }
 
@@ -59,6 +67,10 @@ $editMode = false;
 if (isset($_GET['id'])) {
     $list = getListById($pdo, (int)$_GET['id']);
     $editMode = true;
+
+
+    $items = getListItems($pdo, (int)$_GET['id']);
+
 }
 
 ?>
@@ -133,8 +145,35 @@ if (isset($_GET['id'])) {
         <form method="post" class="d-flex">
            <input type="checkbox" name="status" id="status">
            <input type="text" name="name" id="name" placeholder="Ajouter un item" class="form-control mx-3">
-           <input type="submit" name="saveItem" class="btn btn-primary" value="Enregistrer">
+           <input type="submit" name="saveListItem" class="btn btn-primary" value="Enregistrer">
         </form>
+        <div class="row m-4 border rounded p-2">
+        <?php foreach($items as $item)  {?>
+            
+            <div class="accordion mb-2">
+                <div class="accordion-item" id="accordion-parent-<?=$item['id']?>">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-item<?=$item['id']?>" aria-expanded="false" aria-controls="collapseOne">
+                        <a class="me-2" href="#"><i class="bi bi-check-circle"></i></a>
+                        <?=$item['name'] ?>
+                    </button>
+                </h2>
+            <div id="collapse-item<?=$item['id']?>" class="accordion-collapse collapse" data-bs-parent="#accordion-parent-<?=$item['id']?>">
+                <div class="accordion-body">
+                    <form action="" method="post">
+                        <div class="mb-3 d-flex">
+                           <input type="text" value="<?=$item['name']?>" name="name" class="form-control">
+                           <input type="hidden" name="item_id" value="<?=$item['id'];?>">
+                           <input type="submit" value="Enregistrer" name="saveListItem" class="btn btn-primary m-3">
+                        </div>
+                    </form>
+                    <a class="btn btn-outline-primary" href="?id=<?=$_GET['id']?>&action=deleteListItem&item_id=<?=$item['id']?>" onclick="return confirm('Etes-vous sur de vouloir supprimer cet item ??')">Supprimer<i class="bi bi-trash3-fill"></i></a>
+            </div>
+                </div>
+        </div>
+            <?php } ?>   
+            </div>
+
     <?php } ?>
 </div>
 

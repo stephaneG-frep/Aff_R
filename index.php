@@ -38,7 +38,7 @@
             </div>
             <div class="card-body">
                 <h3 class="card-title">Créer un nombre illimité de listes</h3>
-                <a href="#" class="btn btn-primary">S'inscrire</a>
+                <a href="ajout-modification-liste.php" class="btn btn-primary">S'inscrire</a>
             </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="card-body">
                 <h3 class="card-title">Retrouver facilement vos listes</h3>
-                <a href="#" class="btn btn-primary">S'inscrire</a>
+                <a href="mes-listes.php" class="btn btn-primary">S'inscrire</a>
             </div>
             </div>
         </div>
