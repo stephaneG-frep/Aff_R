@@ -19,17 +19,17 @@
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <a href="index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
            <img src="assets/images/todo.jpg" alt="logo du site" width="50">
+           <h3 class="d-flex mx-3 fw-bold">Aff_R</h3>
         </a>
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="index.php" class="nav-link px-2 link-secondary">Accueil</a></li>
         <li><a href="mes-listes.php" class="nav-link px-2">Mes listes</a></li>
-        <li><a href="#" class="nav-link px-2">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2">FAQs</a></li>
-        <li><a href="a-propos.php" class="nav-link px-2">About</a></li>
+        <li><a href="ajout-modification-liste.php" class="nav-link px-2">Modif..</a></li>
+        <li><a href="a-propos.php" class="nav-link px-2">A-propos</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
@@ -38,7 +38,7 @@
         <?php } else { ?>
           <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
         <?php } ?>  
-        <button type="button" class="btn btn-primary">Sign-up</button>  
+        <a href="inscription.php" type="button" class="btn btn-primary">S'inscrire</a>  
       </div>
     </header>
   </div>

@@ -12,11 +12,12 @@
 
   <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
+      <div class="col-10 col-sm-8 col-lg-6 text-center">
+        <h3 class=" mb-5 mx-3 fw-bold">Aff_R</h3>
         <img src="assets/images/todo.jpg" class="d-block mx-lg-auto img-fluid" alt="logo du nsite" width="300" height="300" loading="lazy">
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Gardez vos liste avec vous !</h1>
+        <h1 class="display-5 fw-bold lh-1 mb-3">Avec Aff_R</br> gardez vos liste avec vous !</h1>
         <p class="lead">Bienvenu sur Aff_R votre platforme de création de listes de taches. Avec Aff_r plus de problèmes d'oublies.
            Aff_R est là pour vous rendre service. créez vos liste et le tour est joué ! Ne perdez plus la main sur vos taches quotidiennes.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -50,7 +51,7 @@
             </div>
             <div class="card-body">
                 <h3 class="card-title">Classer les listes par catégories</h3>
-                <a href="#" class="btn btn-primary">S'inscrire</a>
+                <a href="mes-listes.php" class="btn btn-primary">S'inscrire</a>
             </div>
             </div>
         </div>

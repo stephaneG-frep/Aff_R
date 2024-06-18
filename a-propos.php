@@ -9,10 +9,13 @@
       </div>
     <h1 class="display-4 fw-bold ">Notre histoire</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap,
-         the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-          responsive grid system,
-         extensive prebuilt components, and powerful JavaScript plugins.</p>    
+      <p class="lead mb-4">Sociétée de developpement -Nabucodeonothers-.</br> Notre entreprise reste une entreprise à taille humaine.</br>
+       Nous développons des sites web,</br> des applications web ainsi </br>que des applications de téléphone.
+       Nous essayons de nous adapter </br>le plus possible a notre clientèle. 
+       Si vous avez des questions </br>voici un petit lien pour nous les poser
+      <a class="text-decoration-none fw-bold" href="mailto:weshsteff@yahoo.fr?sujet=toutes vos questions"><strong >Email</strong> : </a>
+       Nous avons crée cette appli web </br> pour vous aider dans vos taches quotidienne </br> elle reste et restera gratuite.
+      </p>    
     </div>
     <div class="row">
       <div class="container px-5">

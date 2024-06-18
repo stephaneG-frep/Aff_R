@@ -2,10 +2,19 @@
 require_once __DIR__. "/templates/header.php";
 require_once __DIR__. "/lib/pdo.php";
 require_once __DIR__. "/lib/list.php";
+require_once __DIR__. "/lib/category.php";
 
+
+$categoryId = null;
 if(isset($_SESSION['user'])) {
-    $lists = getListsByUserId($pdo, $_SESSION['user']['id'], );
+    if (isset($_GET['category'])) {
+       $categoryId = (int)$_GET['category'];
+   
+    } 
+    $lists = getListsByUserId($pdo, $_SESSION['user']['id'], $categoryId);
 }
+
+$categories = getCategories($pdo);
 ?>
 
    <div class="container">
@@ -14,11 +23,18 @@ if(isset($_SESSION['user'])) {
            <?php if ( isUserConnected()) {?>
            <a href="ajout-modification-liste.php" class="btn btn-primary">Ajouter une liste</a>
            <?php } ?>
+              <form method="get">
+                   <label for="category" class="form-label">Catégorie</label>
+                   <select name="category" id="category" onchange="this.form.submit()">
+                        <option value="">Toutes</option>
+                        <?php foreach($categories as $category) {?>
+                            <option <?=($category['id'] === $categoryId ? 'selected="selected"' : '' ) ?> value="<?=$category['id'] ?>"><?=$category['name'] ?></option>
+                        <?php }?>
+                    </select>    
+              </form>
        </div>
 
-       <div class="row">
-
-    
+       <div class="row">   
         <?php if ( isUserConnected()) { 
             if ($lists) { 
                 foreach ($lists as $list) { ?>
