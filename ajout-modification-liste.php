@@ -58,16 +58,25 @@ if (isset($_POST['saveListItem'])) {
 // si action delete demandée item(id)
 if (isset($_GET['action']) && isset($_GET['item_id'])) {
     if ($_GET['action'] === 'deleteListItem') {
-        $res = deleteListItemById($pdo, $_GET['item_id']);
+        $res = deleteListItemById($pdo, (int)$_GET['item_id']);
         header("location: ajout-modification-liste.php?id=" . $_GET['id']);
     }
+// si action de click fait demandée
+    if ($_GET['action'] === 'updateStatusListItem') {
+        $res = updateListItemStatus($pdo, (int)$_GET['item_id'], (bool)$_GET['status']);
+        if (isset($_GET['redirect']) && $_GET['redirect'] === 'list') {
+            header('location: mes-listes.php');
+        } else {
+        header("location: ajout-modification-liste.php?id=" . $_GET['id']);
+        }
+    }
 }
+
 
 $editMode = false;
 if (isset($_GET['id'])) {
     $list = getListById($pdo, (int)$_GET['id']);
     $editMode = true;
-
 
     $items = getListItems($pdo, (int)$_GET['id']);
 
@@ -153,8 +162,8 @@ if (isset($_GET['id'])) {
             <div class="accordion mb-2">
                 <div class="accordion-item" id="accordion-parent-<?=$item['id']?>">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-item<?=$item['id']?>" aria-expanded="false" aria-controls="collapseOne">
-                        <a class="me-2" href="#"><i class="bi bi-check-circle"></i></a>
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-item<?=$item['id'] ?>" aria-expanded="false" aria-controls="collapseOne">
+                        <a class="me-2" href="?id=<?=$_GET['id']?>&action=updateStatusListItem&item_id=<?=$item['id'] ?>&status=<?=!$item['status'] ?>"><i class="bi bi-check-circle<?=($item['status'] ? '-fill' : '') ?>"></i></a>
                         <?=$item['name'] ?>
                     </button>
                 </h2>

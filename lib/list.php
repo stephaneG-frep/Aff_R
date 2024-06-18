@@ -109,3 +109,13 @@ function deleteListItemById(PDO $pdo, int $id):bool
 
      return $query->execute();
 }
+
+  // Fonction de click fait ou pas fait 
+function updateListItemStatus(PDO $pdo, int $id, bool $status):bool
+{
+     $query = $pdo->prepare("UPDATE item SET status = :status WHERE id = :id");
+     $query->bindValue(':id', $id, PDO::PARAM_INT);
+     $query->bindValue(':status', $status, PDO::PARAM_BOOL);
+    
+     return $query->execute();
+}

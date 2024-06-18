@@ -13,7 +13,7 @@
   <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="assets/images/todo.jpg" class="d-block mx-lg-auto img-fluid" alt="logo du nsite" width="400" height="300" loading="lazy">
+        <img src="assets/images/todo.jpg" class="d-block mx-lg-auto img-fluid" alt="logo du nsite" width="300" height="300" loading="lazy">
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Gardez vos liste avec vous !</h1>
