@@ -10,11 +10,11 @@
     <h1 class="display-4 fw-bold ">Notre histoire</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Sociétée de developpement -Nabucodeonothers-.</br> Notre entreprise reste une entreprise à taille humaine.</br>
-       Nous développons des sites web,</br> des applications web ainsi </br>que des applications de téléphone.
-       Nous essayons de nous adapter </br>le plus possible a notre clientèle. 
-       Si vous avez des questions </br>voici un petit lien pour nous les poser
+       Nous développons des sites web, des applications web ainsi que des applications de téléphone.</br>
+       Nous essayons de nous adapter le plus possible a notre clientèle.</br> 
+       Si vous avez des questions, voici un petit lien pour nous les poser.</br>
       <a class="text-decoration-none fw-bold" href="mailto:weshsteff@yahoo.fr?sujet=toutes vos questions"><strong >Email</strong> : </a>
-       Nous avons crée cette appli web </br> pour vous aider dans vos taches quotidienne </br> elle reste et restera gratuite.
+       Nous avons crée cette appli web pour vous aider dans vos taches quotidienne. </br> Elle reste et restera gratuite.
       </p>    
     </div>
     <div class="row">
