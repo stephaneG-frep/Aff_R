@@ -1,7 +1,7 @@
 <?php
  require_once __DIR__. "/templates/header.php";
 
-/*  A fire quand ta oublié le premier password hached dans ta BDD
+/*  A faire quand ta oublié le premier password hached dans ta BDD
 *   $hash = password_hash('admin', PASSWORD_DEFAULT);
 *   var_dump($hash); recopier le résultat du var_dump dans la BDD
 */  
