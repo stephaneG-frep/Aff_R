@@ -51,6 +51,8 @@
 
        <input type="submit" name="loginUser" value="Connexion" class="btn btn-primary">
 
+       <span class="psw"><a href="forgot_password.php">Mot de passe oublié ?</a></span>
+
     </form>
 
 </div>

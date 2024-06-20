@@ -39,7 +39,7 @@ require_once __DIR__. "/lib/pdo.php";
 
         <a href="index.php" class="btn btn-primary">Connection</a>
 
-        <span class="psw"><a href="forgot_password.php">Mot de passe oublié ?</a></span>
+        
 
     </form>
 

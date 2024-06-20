@@ -1,24 +1,17 @@
 <?php
-session_start();
-require_once __DIR__. "/templates/header.php";
 
-try
-{
-    $pdo = new PDO("mysql:dbname=Aff_R;host=localhost;charset=utf8mb4", "root", "root");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (Exception $e)
-{
-    die('Erreur : ' . $e->getMessage());
-}
+require_once __DIR__. "/templates/header.php";
+require_once __DIR__. "/lib/pdo.php";
+
+
 ?>
-<div class="container">
-    <h2>Forgot password</h2>
+<div class="container col-xxl-8 px-4 py-5">
+    <h2>Mot de passe oublié</h2>
     <form method="post">
-        <div class="container">
-            <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="email" required>
-            <button type="submit">Send me a random password</button>
+        <div class="mb-3">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input class="form-control"  type="email" placeholder="Enter Email" name="email" required>
+            <button type="submit" class="btn btn-primary mt-3">Send me a token</button>
         </div>
     </form>
 </div>
@@ -26,16 +19,18 @@ catch (Exception $e)
 
 <?php
     if (isset($_POST['email'])) {
-    $password = uniqid();
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $token = uniqid();
+    $url = "http://localhost/my_php/Aff_R/token?token=$token.php";
 
     $subject = 'Mot de passe oublié';
-    $message = "Bonjour, voici votre nouveau mot de passe : $password";
+    $message = "Bonjour, voici votre lien pour votre nouveau mot de passe : $password";
     $headers = 'Content-Type: text/plain; charset="UTF-8"';
 
     if (mail($_POST['email'], $subject, $message, $headers)) {
-        $stmt = $db->prepare("UPDATE users SET password = ? WHERE email = ?");
-        $stmt->execute([$hashedPassword, $_POST['email']]);
+
+        $sql = "UPDATE user SET token = ? WHERE email = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$token, $_POST['email']]);
         echo "E-mail envoyé";
     } else {
         echo "Une erreur est survenue";
