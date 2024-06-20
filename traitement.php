@@ -1,5 +1,7 @@
 <?php
 
+
+
 try
 {
     $pdo = new PDO("mysql:dbname=Aff_R;host=localhost;charset=utf8mb4", "root", "root");
@@ -25,6 +27,8 @@ if (isset($_POST['inscription'])){
        )
     );
 
+
+   
    header('location: index.php');
 }
 
