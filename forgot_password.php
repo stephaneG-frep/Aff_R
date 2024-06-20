@@ -23,7 +23,7 @@ require_once __DIR__. "/lib/pdo.php";
     $url = "http://localhost/my_php/Aff_R/token?token=$token.php";
 
     $subject = 'Mot de passe oublié';
-    $message = "Bonjour, voici votre lien pour votre nouveau mot de passe : $password";
+    $message = "Bonjour, voici votre lien pour votre nouveau mot de passe : $url";
     $headers = 'Content-Type: text/plain; charset="UTF-8"';
 
     if (mail($_POST['email'], $subject, $message, $headers)) {
