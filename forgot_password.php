@@ -1,10 +1,9 @@
 <?php
-
+session_start();
 require_once __DIR__. "/templates/header.php";
 require_once __DIR__. "/lib/pdo.php";
-
-
 ?>
+
 <div class="container col-xxl-8 px-4 py-5">
     <h2>Mot de passe oublié</h2>
     <form method="post">
@@ -20,19 +19,21 @@ require_once __DIR__. "/lib/pdo.php";
 <?php
     if (isset($_POST['email'])) {
     $token = uniqid();
-    $url = "http://localhost/my_php/Aff_R/token?token=$token.php";
+    $url = "http://localhost/my_php/Aff_R/token?token=$token";
 
     $subject = 'Mot de passe oublié';
     $message = "Bonjour, voici votre lien pour votre nouveau mot de passe : $url";
-    $headers = 'Content-Type: text/plain; charset="UTF-8"';
+    $headers = 'Content-Type: text/plain; charset="UTF-8"'." ";
 
     if (mail($_POST['email'], $subject, $message, $headers)) {
 
-        $sql = "UPDATE user SET token = ? WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
+        //$sql = ("UPDATE user SET token = ? WHERE email = ?");
+
+        $stmt = $pdo->prepare("UPDATE user SET token = ? WHERE email = ?");
         $stmt->execute([$token, $_POST['email']]);
-        echo "E-mail envoyé";
+        echo "Email envoyé";
     } else {
+        echo $token;
         echo "Une erreur est survenue";
     }
 } 

@@ -21,6 +21,8 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password):bool
 
 }
 
+
+/*
 function newUserLogin(PDO $pdo, string $nickname, string $email, string $password)
 {
    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -33,4 +35,4 @@ function newUserLogin(PDO $pdo, string $nickname, string $email, string $passwor
   
     return $query->execute();
 }
-
+*/
