@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.1.2
+- https://www.phpmyadmin.net
+-
+- Hôte : localhost:3306
+- Généré le : mar. 24 sep. 2024 à 09:43
+- Version du serveur : 5.7.24
+- Version de PHP : 8.3.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="aff_r" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="category">
+                CREATE TABLE `category` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` varchar(255) NOT NULL,
+                  `icon` varchar(255) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="item">
+                CREATE TABLE `item` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` varchar(255) NOT NULL,
+                  `status` tinyint(1) NOT NULL,
+                  `list_id` int(10) unsigned NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `item_ibfk_1` (`list_id`),
+                  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`list_id`) REFERENCES `list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="list">
+                CREATE TABLE `list` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `title` varchar(255) NOT NULL,
+                  `user_id` int(10) unsigned NOT NULL,
+                  `category_id` int(10) unsigned NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `list_ibfk_1` (`category_id`),
+                  KEY `list_ibfk_2` (`user_id`),
+                  CONSTRAINT `list_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+                  CONSTRAINT `list_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="user">
+                CREATE TABLE `user` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `nickname` varchar(255) NOT NULL,
+                  `email` varchar(255) NOT NULL,
+                  `password` varchar(255) NOT NULL,
+                  `token` text,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Base de données : 'aff_r'
+    -->
+    <database name="aff_r">
+        <!-- Table category -->
+        <table name="category">
+            <column name="id">1</column>
+            <column name="name">Voyage</column>
+            <column name="icon">bi-luggage-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">2</column>
+            <column name="name">Travail</column>
+            <column name="icon">bi-person-workspace</column>
+        </table>
+        <table name="category">
+            <column name="id">3</column>
+            <column name="name">Courses</column>
+            <column name="icon">bi-cart-check</column>
+        </table>
+        <table name="category">
+            <column name="id">4</column>
+            <column name="name">Emails</column>
+            <column name="icon">bi bi-at</column>
+        </table>
+        <table name="category">
+            <column name="id">5</column>
+            <column name="name">Ecole</column>
+            <column name="icon">bi bi-backpack4-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">6</column>
+            <column name="name">Réveil</column>
+            <column name="icon">bi bi-alarm</column>
+        </table>
+        <table name="category">
+            <column name="id">7</column>
+            <column name="name">Prendre RDV</column>
+            <column name="icon">bi bi-alarm-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">8</column>
+            <column name="name">Anniversaires</column>
+            <column name="icon">bi bi-cake2</column>
+        </table>
+        <table name="category">
+            <column name="id">9</column>
+            <column name="name">Renouvellements</column>
+            <column name="icon">bi bi-arrow-counterclockwise</column>
+        </table>
+        <table name="category">
+            <column name="id">10</column>
+            <column name="name">Annulations</column>
+            <column name="icon">bi bi-backspace-reverse</column>
+        </table>
+        <table name="category">
+            <column name="id">11</column>
+            <column name="name">Soins</column>
+            <column name="icon">bi bi-bandaid-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">12</column>
+            <column name="name">Recharger</column>
+            <column name="icon">bi bi-battery-charging</column>
+        </table>
+        <table name="category">
+            <column name="id">13</column>
+            <column name="name">Sport</column>
+            <column name="icon">bi bi-bicycle</column>
+        </table>
+        <table name="category">
+            <column name="id">14</column>
+            <column name="name">Colis</column>
+            <column name="icon">bi bi-box-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">15</column>
+            <column name="name">Poubelles</column>
+            <column name="icon">bi bi-trash3-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">16</column>
+            <column name="name">Loyer</column>
+            <column name="icon">bi bi-card-headin</column>
+        </table>
+        <table name="category">
+            <column name="id">17</column>
+            <column name="name">Enregistrements (tv,podcasts,...)</column>
+            <column name="icon">bi bi-cassette-fil</column>
+        </table>
+        <table name="category">
+            <column name="id">18</column>
+            <column name="name">Factures</column>
+            <column name="icon">bi bi-envelope-check-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">19</column>
+            <column name="name">Bricolages</column>
+            <column name="icon">bi bi-wrench-adjustable</column>
+        </table>
+        <table name="category">
+            <column name="id">20</column>
+            <column name="name">Mises a jours</column>
+            <column name="icon">bi bi-windows</column>
+        </table>
+        <table name="category">
+            <column name="id">21</column>
+            <column name="name">Répondre, écrire a..</column>
+            <column name="icon">bi bi-vector-pen</column>
+        </table>
+        <table name="category">
+            <column name="id">22</column>
+            <column name="name">Week-end, balades</column>
+            <column name="icon">bi bi-tree-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">23</column>
+            <column name="name">Horaires (trains,avions, ...)</column>
+            <column name="icon">bi bi-train-front-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">24</column>
+            <column name="name">Cinéma</column>
+            <column name="icon">bi bi-ticket-perforated-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">25</column>
+            <column name="name">Téléphoner</column>
+            <column name="icon">bi bi-telephone-outbound</column>
+        </table>
+        <table name="category">
+            <column name="id">26</column>
+            <column name="name">Pizzas, resto</column>
+            <column name="icon">bi bi-shop-window</column>
+        </table>
+        <table name="category">
+            <column name="id">27</column>
+            <column name="name">Imprimer</column>
+            <column name="icon">bi bi-printer-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">28</column>
+            <column name="name">Banque</column>
+            <column name="icon">bi bi-piggy-bank-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">29</column>
+            <column name="name">Etudes</column>
+            <column name="icon">bi bi-mortarboard-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">30</column>
+            <column name="name">Courrier</column>
+            <column name="icon">bi bi-mailbox-flag</column>
+        </table>
+        <table name="category">
+            <column name="id">31</column>
+            <column name="name">Essence</column>
+            <column name="icon">bi bi-fuel-pump-diesel-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">32</column>
+            <column name="name">Chauffage</column>
+            <column name="icon">bi bi-fire</column>
+        </table>
+        <table name="category">
+            <column name="id">33</column>
+            <column name="name">Lessive</column>
+            <column name="icon">bi bi-fan</column>
+        </table>
+        <table name="category">
+            <column name="id">34</column>
+            <column name="name">Gouters</column>
+            <column name="icon">bi bi-emoji-grin-fill</column>
+        </table>
+        <table name="category">
+            <column name="id">35</column>
+            <column name="name">Ménage, nettoyage</column>
+            <column name="icon">bi bi-bucket-fill</column>
+        </table>
+        <!-- Table item -->
+        <table name="item">
+            <column name="id">1</column>
+            <column name="name">Préparer l&#039;itinéraire avec le guide du routare</column>
+            <column name="status">0</column>
+            <column name="list_id">1</column>
+        </table>
+        <table name="item">
+            <column name="id">2</column>
+            <column name="name">Préparer le sac</column>
+            <column name="status">0</column>
+            <column name="list_id">1</column>
+        </table>
+        <table name="item">
+            <column name="id">3</column>
+            <column name="name">regarder les cours 6,7,8..</column>
+            <column name="status">1</column>
+            <column name="list_id">6</column>
+        </table>
+        <table name="item">
+            <column name="id">4</column>
+            <column name="name">test1</column>
+            <column name="status">1</column>
+            <column name="list_id">1</column>
+        </table>
+        <table name="item">
+            <column name="id">5</column>
+            <column name="name">le jeudi</column>
+            <column name="status">0</column>
+            <column name="list_id">10</column>
+        </table>
+        <!-- Table list -->
+        <table name="list">
+            <column name="id">1</column>
+            <column name="title">Voyage en italie</column>
+            <column name="user_id">1</column>
+            <column name="category_id">1</column>
+        </table>
+        <table name="list">
+            <column name="id">2</column>
+            <column name="title">Voyage a rome</column>
+            <column name="user_id">1</column>
+            <column name="category_id">1</column>
+        </table>
+        <table name="list">
+            <column name="id">3</column>
+            <column name="title">Faire le code php du site </column>
+            <column name="user_id">1</column>
+            <column name="category_id">2</column>
+        </table>
+        <table name="list">
+            <column name="id">5</column>
+            <column name="title">Faire des courses</column>
+            <column name="user_id">1</column>
+            <column name="category_id">3</column>
+        </table>
+        <table name="list">
+            <column name="id">6</column>
+            <column name="title">Session 6,7 et 8 PHP</column>
+            <column name="user_id">1</column>
+            <column name="category_id">2</column>
+        </table>
+        <table name="list">
+            <column name="id">7</column>
+            <column name="title">Une semaine a Cabourg</column>
+            <column name="user_id">1</column>
+            <column name="category_id">1</column>
+        </table>
+        <table name="list">
+            <column name="id">8</column>
+            <column name="title">Session 6,7 et 8 PHP et JS</column>
+            <column name="user_id">1</column>
+            <column name="category_id">2</column>
+        </table>
+        <table name="list">
+            <column name="id">9</column>
+            <column name="title">Session 6,7 et 8 PHP</column>
+            <column name="user_id">1</column>
+            <column name="category_id">2</column>
+        </table>
+        <table name="list">
+            <column name="id">10</column>
+            <column name="title">sortir les poubelles verte</column>
+            <column name="user_id">10</column>
+            <column name="category_id">15</column>
+        </table>
+        <!-- Table user -->
+        <table name="user">
+            <column name="id">1</column>
+            <column name="nickname">John_Doe</column>
+            <column name="email">exemple@yahoo.fr</column>
+            <column name="password">$2y$10$G/5.9ruh2mwPIs4RbEcJVudGUbCW5T6H6P5RGRRudpbmp0SOW9hCK</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">4</column>
+            <column name="nickname">tataouine</column>
+            <column name="email">exemple@yahoo.com</column>
+            <column name="password">21232f297a57a5a743894a0e4a801fc3</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">5</column>
+            <column name="nickname">choubacka</column>
+            <column name="email">etoiledelamort@jedi.fr</column>
+            <column name="password">21232f297a57a5a743894a0e4a801fc3</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">6</column>
+            <column name="nickname">yoda-da</column>
+            <column name="email">yoda.jedi@laforce.com</column>
+            <column name="password">21232f297a57a5a743894a0e4a801fc3</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">7</column>
+            <column name="nickname">homer</column>
+            <column name="email">homer@homer.com</column>
+            <column name="password">21232f297a57a5a743894a0e4a801fc3</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">9</column>
+            <column name="nickname">jesapelgroud</column>
+            <column name="email">jesapelgroud@exemple.com</column>
+            <column name="password">$2y$10$dH.FpO/.CwzvCsCII9iId.qGtxkQI.oPPdKrp84GZuYIvFLJVgn5q</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">10</column>
+            <column name="nickname">stephane gaillet</column>
+            <column name="email">hoopscmoi@gmail.com</column>
+            <column name="password">$2y$10$fX/HykEPzxrVP9pcCG75m.2KMJs9kbxb1dcIHZoiyj8xRmpBqQ0JC</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">11</column>
+            <column name="nickname">stephane gaillet</column>
+            <column name="email">weshsteff@yahoo.fr</column>
+            <column name="password">$2y$10$FhnM1KWgiZoWOj5482kfHe/U/4eRHNP.azdJ1.i/4cT3PeIPCJ/TO</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">14</column>
+            <column name="nickname">marge</column>
+            <column name="email">margesims@gmail.com</column>
+            <column name="password">$2y$10$tipBH2jmHtwMaK8jMHFBD.Vu26vJglr60DF9Jz8uRZZQOcDSrfl8.</column>
+            <column name="token">NULL</column>
+        </table>
+        <table name="user">
+            <column name="id">15</column>
+            <column name="nickname">misterT</column>
+            <column name="email">mister@T.com</column>
+            <column name="password">$2y$10$yZAeGkXjCbPqiCTPJfEcyetmbZ60at7bmnxeQ.8rl8Yg9uh/7AJNi</column>
+            <column name="token">NULL</column>
+        </table>
+    </database>
+</pma_xml_export>
