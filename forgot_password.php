@@ -33,7 +33,7 @@ require_once __DIR__. "/lib/pdo.php";
         $stmt->execute([$token, $_POST['email']]);
         echo "Email envoyé";
     } else {
-        echo $token;
+        
         echo "Une erreur est survenue";
     }
 } 
